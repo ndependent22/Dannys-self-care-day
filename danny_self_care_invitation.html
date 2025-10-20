@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Danny’s Self Care Day Invitation</title>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+<link rel="preconnect" href="https://www.youtube.com" crossorigin>
+<style>
+  :root{
+    --gold: #C4A24A;
+    --teal: #1C8C8A;
+    --navy1: #0b1220;
+    --navy2: #121b31;
+    --navy3: #0e1426;
+    --parchment1: #faf6ed;
+    --parchment2: #efe6d4;
+    --parchment3: #eadfca;
+    --soft-border: #e8dcc4;
+  }
+  *{box-sizing:border-box}
+  html,body,#root{height:100%}
+  body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    background: radial-gradient(100% 120% at 50% 0%, var(--navy2) 0%, var(--navy1) 55%, var(--navy3) 100%);
+    color:#111827;
+  }
+  .page-wrap{
+    min-height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    position:relative;
+  }
+  /* gold glow edges */
+  .page-wrap:before,.page-wrap:after{
+    content:"";
+    position:absolute;
+    left:0; right:0;
+    height:140px;
+    pointer-events:none;
+  }
+  .page-wrap:before{ top:0; background: radial-gradient(70% 100% at 50% 0%, rgba(196,162,74,.35), rgba(196,162,74,0)); }
+  .page-wrap:after{ bottom:0; background: radial-gradient(70% 100% at 50% 100%, rgba(196,162,74,.25), rgba(196,162,74,0)); }
+  .container{ width:100%; max-width:980px; }
+  .tagline{
+    color:var(--gold);
+    text-align:center;
+    font-style:italic;
+    font-size:clamp(22px, 2.8vw, 34px);
+    letter-spacing:.3px;
+    margin:0 0 12px;
+  }
+  .header{
+    text-align:center;
+    margin-bottom:20px;
+  }
+  .pill{
+    display:inline-block;
+    border:1px solid var(--gold);
+    color:var(--teal);
+    padding:8px 16px;
+    border-radius:999px;
+    font-size:12px;
+    letter-spacing:.2em;
+  }
+  .title1{
+    color:var(--gold);
+    margin:.7rem 0 .2rem;
+    font-size:clamp(26px, 3.2vw, 40px);
+    font-family: "Cinzel", ui-serif, Georgia, "Times New Roman", Times, serif;
+  }
+  .title2{
+    color:#eaeaf0;
+    margin:.1rem 0 0;
+    font-size:clamp(22px, 2.6vw, 34px);
+    font-family: "Playfair Display", ui-serif, Georgia, "Times New Roman", Times, serif;
+  }
+  /* Scroll */
+  .dowel{
+    height:16px; width:92%;
+    background:var(--gold);
+    border-radius:999px;
+    position:absolute; left:50%; transform:translateX(-50%);
+    box-shadow:0 6px 10px rgba(0,0,0,.12);
+  }
+  .dowel.bottom{ bottom:-24px; box-shadow:0 -6px 10px rgba(0,0,0,.10); }
+  .scroll{
+    border:1px solid var(--gold);
+    border-radius:22px;
+    overflow:hidden;
+    cursor:pointer;
+    box-shadow:0 14px 28px rgba(0,0,0,.16);
+    background: radial-gradient(120% 100% at 50% 0%, var(--parchment1) 0%, var(--parchment2) 55%, var(--parchment3) 100%);
+  }
+  .cap-top{ height:40px; background: linear-gradient(to bottom, rgba(0,0,0,.06), rgba(0,0,0,0)); }
+  .cap-bottom{ height:40px; background: linear-gradient(to top, rgba(0,0,0,.06), rgba(0,0,0,0)); }
+  .pre{ text-align:center; padding:8px 24px 20px; color:#374151; }
+  .hint{ text-transform:uppercase; font-size:11px; letter-spacing:.2em; color:var(--teal); }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+  .card{ border:1px solid var(--soft-border); background:rgba(255,255,255,.65); backdrop-filter:saturate(1.1) blur(2px); border-radius:14px; padding:14px; }
+  .time{ color:var(--teal); font-size:13px; letter-spacing:.04em; font-weight:600; }
+  .event{ color:#111827; font-size:15px; font-weight:700; margin-top:3px; }
+  .detail{ color:#4b5563; font-size:13px; margin-top:2px; }
+  .info{ margin-top:22px; display:grid; gap:10px; }
+  .inforow{ border:1px solid var(--soft-border); border-radius:14px; padding:14px; background:rgba(255,255,255,.65); }
+  .inforow .label{ color:var(--teal); font-size:13px; font-weight:700; letter-spacing:.04em; }
+  .inforow .text{ color:#374151; font-size:14px; margin-top:4px; }
+  .actions{ text-align:center; margin-top:22px; }
+  .btn{
+    border:1px solid var(--gold);
+    color:var(--teal);
+    background:linear-gradient(180deg, rgba(196,162,74,.10), rgba(196,162,74,.02));
+    padding:10px 18px; border-radius:999px; font-weight:600; letter-spacing:.02em;
+    box-shadow:0 6px 18px rgba(196,162,74,.18);
+    cursor:pointer;
+  }
+  .btn:hover{ filter:brightness(1.05); box-shadow:0 10px 24px rgba(196,162,74,.28); }
+  .foot-hint{ text-align:center; color:#9ca3af; font-size:12px; margin-top:8px; }
+  /* Print: show content fully expanded */
+  @media print{
+    .scroll{ max-height:none !important; }
+  }
+</style>
+<!-- Google Fonts for regal look -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="root"></div>
+
+<!-- React & Framer Motion UMD builds -->
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+
+<!-- YouTube IFrame API (for Cater to You) -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+  const { useState, useEffect, useRef } = React;
+  const { motion, AnimatePresence } = window['framer-motion'];
+
+  function useYouTubeFade(videoId){
+    const playerRef = useRef(null);
+    const readyRef = useRef(false);
+    const targetVolRef = useRef(0);
+    const fadeTimerRef = useRef(null);
+
+    useEffect(() => {
+      // Create player once API is ready
+      window.onYouTubeIframeAPIReady = () => {
+        playerRef.current = new YT.Player('ytbg', {
+          height: '0', width: '0',
+          videoId,
+          playerVars: { 'playsinline': 1, 'controls': 0, 'rel': 0, 'mute': 0, 'start': 0 },
+          events: {
+            'onReady': () => { readyRef.current = true; playerRef.current.setVolume(0); },
+          }
+        });
+      };
+      return () => {
+        if(fadeTimerRef.current) cancelAnimationFrame(fadeTimerRef.current);
+        try{ playerRef.current && playerRef.current.destroy && playerRef.current.destroy(); }catch(e){}
+      };
+    }, [videoId]);
+
+    const fadeTo = (toVol=60, ms=5000) => {
+      if(!readyRef.current || !playerRef.current) return;
+      const p = playerRef.current;
+      try { p.playVideo && p.playVideo(); } catch(e){}
+      const startVol = p.getVolume ? p.getVolume() : 0;
+      const start = performance.now();
+      targetVolRef.current = toVol;
+      const step = (t) => {
+        const prog = Math.min(1, (t - start)/ms);
+        const v = Math.round(startVol + (toVol - startVol) * prog);
+        try{ p.setVolume(v); }catch(e){}
+        if(prog < 1) fadeTimerRef.current = requestAnimationFrame(step);
+      };
+      fadeTimerRef.current = requestAnimationFrame(step);
+    };
+
+    const fadeOutStop = (ms=1200) => {
+      if(!readyRef.current || !playerRef.current) return;
+      const p = playerRef.current;
+      const startVol = p.getVolume ? p.getVolume() : 60;
+      const start = performance.now();
+      const step = (t) => {
+        const prog = Math.min(1, (t - start)/ms);
+        const v = Math.max(0, Math.round(startVol * (1 - prog)));
+        try{ p.setVolume(v); }catch(e){}
+        if(prog < 1){ requestAnimationFrame(step); } else { try{ p.pauseVideo && p.pauseVideo(); }catch(e){} }
+      };
+      requestAnimationFrame(step);
+    };
+
+    return { fadeTo, fadeOutStop };
+  }
+
+  function InvitationScroll(){
+    const [open, setOpen] = useState(false);
+    const { fadeTo, fadeOutStop } = useYouTubeFade('5iDPw_qjhtM'); // Destiny's Child - Cater 2 U
+
+    useEffect(() => {
+      if(open){
+        // fade in over 5s
+        fadeTo(60, 5000);
+      } else {
+        fadeOutStop(1200);
+      }
+    }, [open]);
+
+    const parchment = 'background: radial-gradient(120% 100% at 50% 0%, var(--parchment1) 0%, var(--parchment2) 55%, var(--parchment3) 100%);';
+
+    return (
+      React.createElement("div", {className:"page-wrap"},
+        React.createElement("div", {className:"container"},
+          React.createElement("div", {className:"tagline"}, "Because the King Deserves a Reset"),
+          React.createElement("div", {className:"header"},
+            React.createElement("div", {className:"pill"}, "FRIDAY • OCTOBER 24, 2025"),
+            React.createElement("div", {className:"title1"}, "𝓨𝓸𝓾 𝓐𝓻𝓮 𝓒𝓸𝓻𝓭𝓲𝓪𝓵𝓵𝔂 𝓘𝓷𝓿𝓲𝓽𝓮𝓭 𝓽𝓸"),
+            React.createElement("div", {className:"title2"}, "𝓓𝓪𝓷𝓷𝔂’𝓼 𝓢𝓮𝓵𝓯 𝓒𝓪𝓻𝓮 𝓓𝓪𝔂 𝓘𝓷𝓿𝓲𝓽𝓪𝓽𝓲𝓸𝓷")
+          ),
+          React.createElement("div", {className:"relative", style:{position:"relative"}},
+            React.createElement("div", {id:"ytbg"}),
+
+            React.createElement("div", {className:"dowel", style:{top:"-24px"}}),
+            React.createElement(motion.div, {
+              className:"dowel bottom",
+              initial:false,
+              animate:{ opacity: open ? 1 : 0.85, y: open ? 0 : 6 },
+              transition:{ type:"spring", stiffness:200, damping:22 }
+            }),
+            React.createElement(motion.div, {
+              className:"scroll",
+              onClick: () => setOpen(!open),
+              initial:false,
+              animate:{
+                maxHeight: open ? 1400 : 180,
+                boxShadow: open ? "0 30px 60px rgba(0,0,0,.22)" : "0 14px 28px rgba(0,0,0,.16)"
+              },
+              transition:{ type:"spring", stiffness:120, damping:18 },
+              style:{ backgroundImage:"radial-gradient(120% 100% at 50% 0%, var(--parchment1) 0%, var(--parchment2) 55%, var(--parchment3) 100%)" }
+            },
+              React.createElement("div", {className:"cap-top"}),
+              React.createElement("div", {className:"pre"},
+                React.createElement("p", {style:{margin:"6px 0 4px"}}, "A day dedicated to relaxation, renewal, and restoration."),
+                React.createElement("p", {className:"hint"}, open ? "Click to roll back up" : "Click to unroll and reveal schedule")
+              ),
+              React.createElement(AnimatePresence, {initial:false},
+                open && React.createElement(motion.div, {
+                  key:"content",
+                  initial:{opacity:0, y:-8},
+                  animate:{opacity:1, y:0},
+                  exit:{opacity:0, y:-6},
+                  transition:{duration:.35}
+                },
+                  React.createElement("div", {style:{padding:"0 24px 28px"}},
+                    React.createElement("div", {style:{height:"1px", width:"100%", marginBottom:"18px", background:"linear-gradient(90deg, transparent, var(--gold), transparent)"}}),
+                    React.createElement("h3", {style:{color:"#eaeaf0", margin:"0 0 10px", fontSize:"20px"}}, "Schedule of Events"),
+                    React.createElement("div", {className:"grid"},
+                      schedule.map(function(row){
+                        return React.createElement("div", {className:"card", key:row.time},
+                          React.createElement("div", {className:"time"}, row.time),
+                          React.createElement("div", {className:"event"}, row.event),
+                          row.detail ? React.createElement("div", {className:"detail"}, row.detail) : null
+                        );
+                      })
+                    ),
+                    React.createElement("div", {className:"info"},
+                      React.createElement("div", {className:"inforow"},
+                        React.createElement("div", {className:"label"}, "Dress Code"),
+                        React.createElement("div", {className:"text"}, "Casual comfort — breathable fabrics, soft tones, and relaxation in motion.")
+                      ),
+                      React.createElement("div", {className:"inforow"},
+                        React.createElement("div", {className:"label"}, "Ambiance"),
+                        React.createElement("div", {className:"text"}, "Soft music, natural sunlight, gentle notes of eucalyptus and lavender.")
+                      ),
+                      React.createElement("div", {className:"inforow"},
+                        React.createElement("div", {className:"label"}, "Note"),
+                        React.createElement("div", {className:"text"}, "Your presence is not just requested — it’s required. Danny’s Self Care Day begins promptly at 8:30 AM.")
+                      )
+                    )
+                  )
+                )
+              ),
+              React.createElement("div", {className:"cap-bottom"})
+            )
+          ),
+          React.createElement("div", {className:"actions"},
+            React.createElement("button", {className:"btn", onclick:"window.print()"}, "Download as PDF or PNG")
+          ),
+          React.createElement("div", {className:"foot-hint"}, "Tap the scroll to ", open ? "roll up." : "unroll.")
+        )
+      )
+    );
+  }
+
+  const schedule = [
+    { time: "8:30 AM – 9:05 AM", event: "Outdoor Meditation & Yoga in the Sun" },
+    { time: "9:05 AM – 9:20 AM", event: "Morning Shower Refresh" },
+    { time: "9:20 AM – 9:30 AM", event: "Hearty Breakfast", detail: "Eggs or omelet with spinach & cheese, toast, hash browns, ham" },
+    { time: "9:30 AM – 9:55 AM", event: "Drive to Facial Appointment" },
+    { time: "10:00 AM – 11:00 AM", event: "Facial — D Lashes Beauty Bar" },
+    { time: "11:00 AM – 11:15 AM", event: "Drive to IV Hydration" },
+    { time: "11:15 AM – 12:15 PM", event: "IV Hydration — ‘Ultimate Pick Me Up (Premium)’", detail: "Ultimate Drip Therapy, 9114 Wheat Cross Dr" },
+    { time: "12:30 PM – 1:15 PM", event: "Lunch — Chipotle or Jersey Mike’s" },
+    { time: "2:00 PM – 2:45 PM", event: "Recharge Nap" },
+    { time: "3:30 PM – 4:30 PM", event: "Assisted Stretching Session", detail: "A Body to Dy For or StretchLab" },
+    { time: "5:00 PM – 5:30 PM", event: "Quiet Reset" },
+    { time: "6:30 PM – 7:15 PM", event: "Dinner" },
+    { time: "8:00 PM – 9:00 PM", event: "Evening Calm — Movie & Foot Soak" },
+    { time: "10:00 PM", event: "Sleep Reset" },
+  ];
+
+  ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(InvitationScroll));
+</script>
+</body>
+</html>
